@@ -11,7 +11,8 @@
     "axios": "^1.6.0",
     "pg": "^8.11.0",
     "dotenv": "^16.3.1",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "cors": "*"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

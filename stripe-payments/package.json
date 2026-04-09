@@ -12,7 +12,8 @@
     "stripe": "^14.0.0",
     "pg": "^8.11.0",
     "dotenv": "^16.3.1",
-    "body-parser": "^1.20.2"
+    "body-parser": "^1.20.2",
+    "cors": "*"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"
