@@ -958,13 +958,7 @@
 const isCodespaces = window.location.hostname.includes('github.dev');
 
 const getServiceUrl = (port) => {
-  const hostname = window.location.hostname;
-  if (hostname.includes('github.dev') || hostname.includes('githubpreview.dev')) {
-    const parts = hostname.split('-');
-    parts[parts.length - 1] = port + '.app.github.dev';
-    return 'https://' + parts.join('-');
-  }
-  return 'http://localhost:' + port;
+  return 'https://jubilant-space-palm-tree-q76gx445w7vgfx44p-' + port + '.app.github.dev';
 };
 
 const SERVICES = [
@@ -972,7 +966,7 @@ const SERVICES = [
   { name: 'Proposal Engine', port: 7000, icon: '✍️' },
   { name: 'Stripe Payments', port: 8000, icon: '💳' },
   { name: 'Email Automation', port: 9000, icon: '📧' },
-  { name: 'Social Media', port: 10000, icon: '📱' },
+  { name: 'Social Media', port: 3001, icon: '📱' },
   { name: 'Analytics', port: 11000, icon: '📊' },
 ];
 
