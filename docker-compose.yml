@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: ignite_platform
+      POSTGRES_USER: ignite_user
+      POSTGRES_PASSWORD: ignite_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  job-acquisition:
+    build: ./job-acquisition
+    ports:
+      - "6000:6000"
+    environment:
+      DATABASE_URL: postgresql://ignite_user:ignite_pass@postgres:5432/ignite_platform
+      PORT: 6000
+    depends_on:
+      - postgres
+
+  proposal-engine:
+    build: ./proposal-engine
+    ports:
+      - "7000:7000"
+    environment:
+      DATABASE_URL: postgresql://ignite_user:ignite_pass@postgres:5432/ignite_platform
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY}
+      PORT: 7000
+    depends_on:
+      - postgres
+
+  stripe-payments:
+    build: ./stripe-payments
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_URL: postgresql://ignite_user:ignite_pass@postgres:5432/ignite_platform
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET}
+      PORT: 8000
+    depends_on:
+      - postgres
+
+  email-automation:
+    build: ./email-automation
+    ports:
+      - "9000:9000"
+    environment:
+      DATABASE_URL: postgresql://ignite_user:ignite_pass@postgres:5432/ignite_platform
+      SENDGRID_API_KEY: ${SENDGRID_API_KEY}
+      RESEND_API_KEY: ${RESEND_API_KEY}
+      FROM_EMAIL: ${FROM_EMAIL}
+      PORT: 9000
+    depends_on:
+      - postgres
+
+  social-media:
+    build: ./social-media
+    ports:
+      - "10000:10000"
+    environment:
+      DATABASE_URL: postgresql://ignite_user:ignite_pass@postgres:5432/ignite_platform
+      TWITTER_API_KEY: ${TWITTER_API_KEY}
+      TWITTER_API_SECRET: ${TWITTER_API_SECRET}
+      TWITTER_ACCESS_TOKEN: ${TWITTER_ACCESS_TOKEN}
+      TWITTER_ACCESS_SECRET: ${TWITTER_ACCESS_SECRET}
+      LINKEDIN_ACCESS_TOKEN: ${LINKEDIN_ACCESS_TOKEN}
+      PORT: 10000
+    depends_on:
+      - postgres
+
+  analytics:
+    build: ./analytics
+    ports:
+      - "11000:11000"
+    environment:
+      DATABASE_URL: postgresql://ignite_user:ignite_pass@postgres:5432/ignite_platform
+      PORT: 11000
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

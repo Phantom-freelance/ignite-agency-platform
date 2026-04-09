@@ -1,0 +1,20 @@
+{
+  "name": "stripe-payments",
+  "version": "1.0.0",
+  "description": "Stripe Connect + Escrow + Milestone payments",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "nodemon src/index.js",
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "stripe": "^14.0.0",
+    "pg": "^8.11.0",
+    "dotenv": "^16.3.1",
+    "body-parser": "^1.20.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
