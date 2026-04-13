@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ignite Agency Platform - Pro Edition</title>
+<title>Phantom Freelance Collective - Agency Platform</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
   
@@ -11,49 +11,27 @@
     --bg-primary: #0a0e27;
     --bg-secondary: #10151f;
     --bg-card: #151b2b;
-    --accent-orange: #ff6b35;
-    --accent-orange-hover: #ff8555;
+    --accent-primary: #8b5cf6;
+    --accent-hover: #a78bfa;
     --accent-green: #00ff88;
     --accent-blue: #00d4ff;
     --text-primary: #ffffff;
     --text-secondary: #94a3b8;
     --text-muted: #64748b;
     --border-color: #1e293b;
-    --gradient-1: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+    --gradient-1: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
     --gradient-2: linear-gradient(135deg, #00ff88 0%, #00d4ff 100%);
-    --gradient-3: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     --shadow-sm: 0 2px 8px rgba(0,0,0,0.2);
     --shadow-md: 0 4px 16px rgba(0,0,0,0.3);
-    --shadow-lg: 0 8px 32px rgba(0,0,0,0.4);
   }
   
   * { margin: 0; padding: 0; box-sizing: border-box; }
   
   body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-family: 'Inter', sans-serif;
     background: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: hidden;
-  }
-  
-  body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.06) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  .app-container {
-    position: relative;
-    z-index: 1;
   }
   
   .header {
@@ -67,7 +45,6 @@
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: var(--shadow-md);
   }
   
   .logo-section {
@@ -85,36 +62,20 @@
     align-items: center;
     justify-content: center;
     font-size: 24px;
-    box-shadow: var(--shadow-sm);
-  }
-  
-  .logo-text {
-    display: flex;
-    flex-direction: column;
   }
   
   .logo-title {
     font-size: 22px;
     font-weight: 800;
-    letter-spacing: -0.5px;
     background: var(--gradient-1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
   }
   
   .logo-subtitle {
     font-size: 11px;
     color: var(--text-muted);
-    font-weight: 500;
-    letter-spacing: 1px;
     text-transform: uppercase;
-  }
-  
-  .status-bar {
-    display: flex;
-    align-items: center;
-    gap: 24px;
   }
   
   .status-indicator {
@@ -132,26 +93,18 @@
     height: 8px;
     border-radius: 50%;
     background: var(--accent-green);
-    box-shadow: 0 0 12px var(--accent-green);
-    animation: pulse 2s ease-in-out infinite;
+    animation: pulse 2s infinite;
   }
   
   @keyframes pulse {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.5; transform: scale(1.1); }
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
   }
   
   .status-text {
     font-size: 13px;
     font-weight: 600;
     color: var(--accent-green);
-  }
-  
-  .time-display {
-    font-size: 13px;
-    color: var(--text-secondary);
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
   }
   
   .container {
@@ -172,42 +125,12 @@
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 28px;
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  .stat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: var(--gradient-1);
-    opacity: 0;
-    transition: opacity 0.3s;
+    transition: all 0.3s;
   }
   
   .stat-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: var(--accent-orange);
-  }
-  
-  .stat-card:hover::before {
-    opacity: 1;
-  }
-  
-  .stat-card:nth-child(2)::before { background: var(--gradient-2); }
-  .stat-card:nth-child(3)::before { background: var(--gradient-3); }
-  .stat-card:nth-child(4)::before { background: var(--gradient-1); }
-  
-  .stat-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 16px;
+    box-shadow: var(--shadow-md);
   }
   
   .stat-label {
@@ -215,50 +138,20 @@
     font-weight: 600;
     color: var(--text-muted);
     text-transform: uppercase;
-    letter-spacing: 1.2px;
   }
-  
-  .stat-icon {
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 18px;
-    background: rgba(255, 107, 53, 0.1);
-  }
-  
-  .stat-card:nth-child(2) .stat-icon { background: rgba(0, 255, 136, 0.1); }
-  .stat-card:nth-child(3) .stat-icon { background: rgba(102, 126, 234, 0.1); }
-  .stat-card:nth-child(4) .stat-icon { background: rgba(0, 212, 255, 0.1); }
   
   .stat-value {
     font-size: 42px;
     font-weight: 800;
-    line-height: 1;
-    margin-bottom: 8px;
     background: var(--gradient-1);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-variant-numeric: tabular-nums;
+    margin: 8px 0;
   }
-  
-  .stat-card:nth-child(2) .stat-value { background: var(--gradient-2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .stat-card:nth-child(3) .stat-value { background: var(--gradient-3); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
   
   .stat-change {
-    display: flex;
-    align-items: center;
-    gap: 6px;
     font-size: 13px;
-    font-weight: 600;
     color: var(--accent-green);
-  }
-  
-  .stat-change.negative {
-    color: #ff4444;
   }
   
   .card {
@@ -266,135 +159,12 @@
     border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 32px;
-    transition: all 0.3s ease;
-  }
-  
-  .card:hover {
-    box-shadow: var(--shadow-md);
-  }
-  
-  .card-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 24px;
   }
   
   .card-title {
-    display: flex;
-    align-items: center;
-    gap: 12px;
     font-size: 18px;
     font-weight: 700;
-    color: var(--text-primary);
-  }
-  
-  .card-title-icon {
-    font-size: 20px;
-  }
-  
-  .grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-    gap: 24px;
     margin-bottom: 24px;
-  }
-  
-  .grid-3 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
-  }
-  
-  .btn {
-    padding: 12px 24px;
-    border-radius: 10px;
-    border: none;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.2);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-  }
-  
-  .btn:active::before {
-    width: 300px;
-    height: 300px;
-  }
-  
-  .btn-primary {
-    background: var(--gradient-1);
-    color: white;
-    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
-  }
-  
-  .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
-  }
-  
-  .btn-secondary {
-    background: var(--bg-secondary);
-    color: var(--text-primary);
-    border: 1px solid var(--border-color);
-  }
-  
-  .btn-secondary:hover {
-    background: var(--bg-card);
-    border-color: var(--accent-orange);
-  }
-  
-  .btn-success {
-    background: var(--gradient-2);
-    color: var(--bg-primary);
-    box-shadow: 0 4px 12px rgba(0, 255, 136, 0.3);
-  }
-  
-  .btn-sm {
-    padding: 8px 16px;
-    font-size: 13px;
-  }
-  
-  .input, select, textarea {
-    width: 100%;
-    padding: 12px 16px;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    color: var(--text-primary);
-    font-size: 14px;
-    font-family: inherit;
-    margin-bottom: 16px;
-    transition: all 0.2s;
-  }
-  
-  .input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--accent-orange);
-    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-  }
-  
-  textarea.input {
-    min-height: 120px;
-    resize: vertical;
   }
   
   .service-list {
@@ -411,36 +181,19 @@
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    transition: all 0.2s;
-  }
-  
-  .service-item:hover {
-    background: var(--bg-card);
-    border-color: var(--accent-orange);
-  }
-  
-  .service-info {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
   }
   
   .service-name {
     font-weight: 600;
-    font-size: 14px;
-    color: var(--text-primary);
   }
   
   .service-port {
     font-size: 12px;
     color: var(--text-muted);
-    font-family: 'Courier New', monospace;
+    font-family: monospace;
   }
   
   .service-status {
-    display: flex;
-    align-items: center;
-    gap: 8px;
     padding: 6px 12px;
     border-radius: 20px;
     font-size: 12px;
@@ -450,515 +203,83 @@
   .service-status.online {
     background: rgba(0, 255, 136, 0.1);
     color: var(--accent-green);
-    border: 1px solid rgba(0, 255, 136, 0.2);
   }
   
   .service-status.offline {
     background: rgba(255, 68, 68, 0.1);
     color: #ff4444;
-    border: 1px solid rgba(255, 68, 68, 0.2);
-  }
-  
-  .service-status-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: currentColor;
-  }
-  
-  .online .service-status-dot {
-    animation: pulse 2s ease-in-out infinite;
-  }
-  
-  .job-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 16px;
-    transition: all 0.2s;
-  }
-  
-  .job-card:hover {
-    border-color: var(--accent-orange);
-    box-shadow: var(--shadow-sm);
-  }
-  
-  .job-title {
-    font-weight: 600;
-    font-size: 15px;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-  }
-  
-  .job-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 12px;
-    font-size: 13px;
-    color: var(--text-secondary);
-  }
-  
-  .job-description {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-    margin-bottom: 16px;
-  }
-  
-  .job-actions {
-    display: flex;
-    gap: 8px;
-  }
-  
-  .badge {
-    padding: 4px 12px;
-    border-radius: 6px;
-    font-size: 11px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-  
-  .badge-upwork {
-    background: rgba(20, 168, 0, 0.2);
-    color: #14a800;
-  }
-  
-  .badge-fiverr {
-    background: rgba(29, 191, 115, 0.2);
-    color: #1dbf73;
-  }
-  
-  .badge-new {
-    background: rgba(255, 107, 53, 0.2);
-    color: var(--accent-orange);
-  }
-  
-  .tabs {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-    background: var(--bg-secondary);
-    padding: 6px;
-    border-radius: 12px;
-  }
-  
-  .tab {
-    flex: 1;
-    padding: 10px 16px;
-    border-radius: 8px;
-    border: none;
-    background: transparent;
-    color: var(--text-secondary);
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  
-  .tab:hover {
-    color: var(--text-primary);
-  }
-  
-  .tab.active {
-    background: var(--gradient-1);
-    color: white;
-    box-shadow: var(--shadow-sm);
-  }
-  
-  .proposal-output {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 20px;
-    font-size: 13px;
-    line-height: 1.8;
-    white-space: pre-wrap;
-    max-height: 400px;
-    overflow-y: auto;
-    color: var(--text-secondary);
-  }
-  
-  .social-post {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    padding: 14px;
-    margin-bottom: 10px;
-    font-size: 13px;
-    line-height: 1.6;
-  }
-  
-  .social-post-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-  }
-  
-  .social-platform {
-    font-weight: 600;
-    color: var(--accent-orange);
-  }
-  
-  .social-time {
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-  
-  .analytics-section {
-    background: var(--bg-secondary);
-    border-radius: 12px;
-    padding: 20px;
-  }
-  
-  .analytics-row {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 14px;
-  }
-  
-  .analytics-row:last-child {
-    border-bottom: none;
-  }
-  
-  .analytics-label {
-    color: var(--text-secondary);
-  }
-  
-  .analytics-value {
-    font-weight: 700;
-    color: var(--text-primary);
-  }
-  
-  .toast {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background: var(--gradient-2);
-    color: var(--bg-primary);
-    padding: 16px 24px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 14px;
-    box-shadow: var(--shadow-lg);
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 1000;
-  }
-  
-  .toast.show {
-    opacity: 1;
-    transform: translateY(0);
   }
   
   .loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+    text-align: center;
+    padding: 40px;
     color: var(--text-muted);
-    font-size: 14px;
-    font-style: italic;
-    padding: 40px 20px;
-  }
-  
-  .loading::before {
-    content: '';
-    width: 20px;
-    height: 20px;
-    border: 3px solid var(--border-color);
-    border-top-color: var(--accent-orange);
-    border-radius: 50%;
-    animation: spin 0.8s linear infinite;
-  }
-  
-  @keyframes spin {
-    to { transform: rotate(360deg); }
-  }
-  
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: var(--bg-secondary);
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: var(--border-color);
-    border-radius: 5px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: var(--accent-orange);
-  }
-  
-  @media (max-width: 1200px) {
-    .grid-2 {
-      grid-template-columns: 1fr;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    .container {
-      padding: 20px;
-    }
-    
-    .header {
-      padding: 16px 20px;
-    }
-    
-    .stats-grid {
-      grid-template-columns: 1fr;
-    }
-    
-    .stat-value {
-      font-size: 32px;
-    }
   }
 </style>
 </head>
 <body>
-<div class="app-container">
-
-<div class="header">
-  <div class="logo-section">
-    <div class="logo-icon">🔥</div>
-    <div class="logo-text">
-      <div class="logo-title">Ignite Agency</div>
-      <div class="logo-subtitle">Automation Platform</div>
+  <div class="header">
+    <div class="logo-section">
+      <div class="logo-icon">👻</div>
+      <div>
+        <div class="logo-title">Phantom Freelance Collective</div>
+        <div class="logo-subtitle">Agency Platform</div>
+      </div>
     </div>
-  </div>
-  <div class="status-bar">
     <div class="status-indicator">
       <div class="status-dot"></div>
-      <span class="status-text">Systems Checking...</span>
+      <span class="status-text">Checking Systems...</span>
     </div>
-    <div class="time-display" id="current-time"></div>
   </div>
-</div>
 
-<div class="container">
-
-  <div class="stats-grid">
-    <div class="stat-card">
-      <div class="stat-header">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-card">
         <div class="stat-label">Total Jobs Found</div>
-        <div class="stat-icon">💼</div>
+        <div class="stat-value" id="stat-jobs">5</div>
+        <div class="stat-change">Demo mode</div>
       </div>
-      <div class="stat-value" id="stat-jobs">—</div>
-      <div class="stat-change">↑ Demo mode active</div>
-    </div>
-    
-    <div class="stat-card">
-      <div class="stat-header">
+      
+      <div class="stat-card">
         <div class="stat-label">Proposals Generated</div>
-        <div class="stat-icon">✍️</div>
+        <div class="stat-value" id="stat-proposals">0</div>
+        <div class="stat-change">AI-powered</div>
       </div>
-      <div class="stat-value" id="stat-proposals">—</div>
-      <div class="stat-change">AI-powered</div>
-    </div>
-    
-    <div class="stat-card">
-      <div class="stat-header">
+      
+      <div class="stat-card">
         <div class="stat-label">Active VAs</div>
-        <div class="stat-icon">👥</div>
+        <div class="stat-value">0</div>
+        <div class="stat-change">Ready to work</div>
       </div>
-      <div class="stat-value" id="stat-vas">—</div>
-      <div class="stat-change">Ready to work</div>
-    </div>
-    
-    <div class="stat-card">
-      <div class="stat-header">
+      
+      <div class="stat-card">
         <div class="stat-label">Total Revenue</div>
-        <div class="stat-icon">💰</div>
+        <div class="stat-value">$0</div>
+        <div class="stat-change">Stripe connected</div>
       </div>
-      <div class="stat-value" id="stat-revenue">$0</div>
-      <div class="stat-change">Stripe connected</div>
     </div>
-  </div>
 
-  <div class="grid-2">
     <div class="card">
-      <div class="card-header">
-        <div class="card-title">
-          <span class="card-title-icon">⚡</span>
-          Service Status
-        </div>
-      </div>
+      <div class="card-title">⚡ Service Status</div>
       <div class="service-list" id="services-list">
         <div class="loading">Checking services...</div>
       </div>
     </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">
-          <span class="card-title-icon">🔍</span>
-          Fetch Jobs
-        </div>
-      </div>
-      <select class="input" id="fetch-platform">
-        <option value="all">All Platforms</option>
-        <option value="upwork">Upwork</option>
-        <option value="fiverr">Fiverr</option>
-      </select>
-      <input class="input" id="fetch-skills" placeholder="Skills (comma separated): email, scheduling" />
-      <button class="btn btn-primary" onclick="fetchJobs()" style="width:100%">
-        <span>🔍</span>
-        Fetch Available Jobs
-      </button>
-    </div>
   </div>
-
-  <div class="card" style="margin-bottom:24px">
-    <div class="card-header">
-      <div class="card-title">
-        <span class="card-title-icon">💼</span>
-        Available Jobs
-        <span id="jobs-count" style="color:var(--text-muted);font-size:14px;font-weight:400"></span>
-      </div>
-    </div>
-    <div id="jobs-list">
-      <div class="loading">Click "Fetch Available Jobs" to load...</div>
-    </div>
-  </div>
-
-  <div class="grid-2">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">
-          <span class="card-title-icon">✍️</span>
-          Generate Proposal
-        </div>
-      </div>
-      <input class="input" id="prop-client" placeholder="Client name" />
-      <input class="input" id="prop-budget" placeholder="Budget ($)" type="number" />
-      <input class="input" id="prop-skills" placeholder="Skills needed" />
-      <textarea class="input" id="prop-desc" placeholder="Job description..."></textarea>
-      <button class="btn btn-primary" onclick="generateProposal()" style="width:100%;margin-bottom:20px">
-        <span>🤖</span>
-        Generate AI Proposal
-      </button>
-      <div id="proposal-result"></div>
-    </div>
-
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title">
-          <span class="card-title-icon">📱</span>
-          Social Media
-        </div>
-      </div>
-      <div class="tabs">
-        <button class="tab active" onclick="switchTab('twitter')">Twitter</button>
-        <button class="tab" onclick="switchTab('linkedin')">LinkedIn</button>
-        <button class="tab" onclick="switchTab('success')">Success Story</button>
-      </div>
-      <div id="tab-twitter">
-        <textarea class="input" id="tweet-content" placeholder="Tweet content (max 280 chars)..."></textarea>
-        <button class="btn btn-primary" onclick="postTweet()" style="width:100%">
-          <span>🐦</span>
-          Post Tweet (Demo)
-        </button>
-      </div>
-      <div id="tab-linkedin" style="display:none">
-        <textarea class="input" id="linkedin-content" placeholder="LinkedIn post content..."></textarea>
-        <button class="btn btn-primary" onclick="postLinkedIn()" style="width:100%">
-          <span>💼</span>
-          Post to LinkedIn (Demo)
-        </button>
-      </div>
-      <div id="tab-success" style="display:none">
-        <input class="input" id="success-va" placeholder="VA Name" />
-        <input class="input" id="success-project" placeholder="Project Title" />
-        <input class="input" id="success-amount" placeholder="Amount earned ($)" type="number" />
-        <button class="btn btn-success" onclick="postSuccess()" style="width:100%">
-          <span>🎉</span>
-          Auto-Post Success Story
-        </button>
-      </div>
-      <div id="social-log" style="margin-top:16px"></div>
-    </div>
-  </div>
-
-  <div class="card" style="margin-top:24px">
-    <div class="card-header">
-      <div class="card-title">
-        <span class="card-title-icon">📊</span>
-        Analytics Dashboard
-      </div>
-    </div>
-    <div class="grid-3">
-      <div class="analytics-section">
-        <div style="color:var(--text-muted);font-size:12px;margin-bottom:16px;font-weight:600;text-transform:uppercase;letter-spacing:1px">Platform Breakdown</div>
-        <div class="analytics-row">
-          <span class="analytics-label">Upwork Jobs</span>
-          <span class="analytics-value" style="color:#14a800">3</span>
-        </div>
-        <div class="analytics-row">
-          <span class="analytics-label">Fiverr Jobs</span>
-          <span class="analytics-value" style="color:#1dbf73">2</span>
-        </div>
-        <div class="analytics-row">
-          <span class="analytics-label">Avg Budget</span>
-          <span class="analytics-value" style="color:var(--accent-orange)">$680</span>
-        </div>
-      </div>
-      
-      <div class="analytics-section">
-        <div style="color:var(--text-muted);font-size:12px;margin-bottom:16px;font-weight:600;text-transform:uppercase;letter-spacing:1px">Proposal Metrics</div>
-        <div class="analytics-row">
-          <span class="analytics-label">Generated</span>
-          <span class="analytics-value" id="an-proposals">0</span>
-        </div>
-        <div class="analytics-row">
-          <span class="analytics-label">Conversion Rate</span>
-          <span class="analytics-value" style="color:var(--accent-green)">—</span>
-        </div>
-        <div class="analytics-row">
-          <span class="analytics-label">Avg Response</span>
-          <span class="analytics-value">< 1s</span>
-        </div>
-      </div>
-      
-      <div class="analytics-section">
-        <div style="color:var(--text-muted);font-size:12px;margin-bottom:16px;font-weight:600;text-transform:uppercase;letter-spacing:1px">Revenue</div>
-        <div class="analytics-row">
-          <span class="analytics-label">Total</span>
-          <span class="analytics-value" id="an-revenue">$0</span>
-        </div>
-        <div class="analytics-row">
-          <span class="analytics-label">Escrow</span>
-          <span class="analytics-value">$0</span>
-        </div>
-        <div class="analytics-row">
-          <span class="analytics-label">Released</span>
-          <span class="analytics-value">$0</span>
-        </div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-</div>
-
-<div class="toast" id="toast"></div>
 
 <script>
-// CRITICAL: Properly detect if we're in Codespaces and use localhost
-const isCodespaces = window.location.hostname.includes('github.dev');
-
+// Detect Codespaces environment and build proper URLs
+const isCodespaces = window.location.hostname.includes('.app.github.dev');
 const getServiceUrl = (port) => {
-  return 'https://jubilant-space-palm-tree-q76gx445w7vgfx44p-' + port + '.app.github.dev';
+  if (isCodespaces) {
+    // Extract the base Codespaces URL pattern
+    const match = window.location.hostname.match(/([^-]+-[^-]+-[^-]+-[^-]+-[^.]+)/);
+    if (match) {
+      const baseUrl = match[1];
+      return `https://${baseUrl}-${port}.app.github.dev`;
+    }
+  }
+  return `http://localhost:${port}`;
 };
 
 const SERVICES = [
@@ -966,23 +287,13 @@ const SERVICES = [
   { name: 'Proposal Engine', port: 7000, icon: '✍️' },
   { name: 'Stripe Payments', port: 8000, icon: '💳' },
   { name: 'Email Automation', port: 9000, icon: '📧' },
-  { name: 'Social Media', port: 3001, icon: '📱' },
+  { name: 'Social Media', port: 10000, icon: '📱' },
   { name: 'Analytics', port: 11000, icon: '📊' },
 ];
-
-let proposalCount = 0;
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
-}
 
 async function checkServices() {
   const list = document.getElementById('services-list');
   list.innerHTML = '';
-  
   let onlineCount = 0;
   
   for (const svc of SERVICES) {
@@ -991,303 +302,49 @@ async function checkServices() {
     
     try {
       const url = `${getServiceUrl(svc.port)}/health`;
-      console.log(`✅ Checking ${svc.name} at ${url}`);
+      console.log(`Checking ${svc.name} at ${url}`);
       
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 3000);
+      setTimeout(() => controller.abort(), 5000);
       
-      const r = await fetch(url, { signal: controller.signal });
-      clearTimeout(timeout);
-      
+      const r = await fetch(url, { 
+        signal: controller.signal,
+        mode: 'cors'
+      });
       const d = await r.json();
       onlineCount++;
       
       item.innerHTML = `
-        <div class="service-info">
+        <div>
           <div class="service-name">${svc.icon} ${svc.name}</div>
-          <div class="service-port">localhost:${svc.port}${d.mode ? ' · ' + d.mode.toUpperCase() : ''}</div>
+          <div class="service-port">Port ${svc.port}${d.mode ? ' · ' + d.mode.toUpperCase() : ''}</div>
         </div>
-        <div class="service-status online">
-          <span class="service-status-dot"></span>
-          ONLINE
-        </div>
+        <div class="service-status online">ONLINE</div>
       `;
     } catch (e) {
-      console.error(`❌ ${svc.name} check failed:`, e.message);
+      console.error(`${svc.name} check failed:`, e.message);
       item.innerHTML = `
-        <div class="service-info">
+        <div>
           <div class="service-name">${svc.icon} ${svc.name}</div>
-          <div class="service-port">localhost:${svc.port}</div>
+          <div class="service-port">Port ${svc.port}</div>
         </div>
-        <div class="service-status offline">
-          <span class="service-status-dot"></span>
-          OFFLINE
-        </div>
+        <div class="service-status offline">OFFLINE</div>
       `;
     }
     
     list.appendChild(item);
   }
   
-  // Update header status
   const statusText = document.querySelector('.status-text');
-  const statusIndicator = document.querySelector('.status-indicator');
-  
-  if (onlineCount === SERVICES.length) {
-    statusText.textContent = 'All Systems Operational';
-    statusIndicator.style.background = 'rgba(0, 255, 136, 0.1)';
-    statusIndicator.style.borderColor = 'rgba(0, 255, 136, 0.2)';
-  } else if (onlineCount > 0) {
-    statusText.textContent = `${onlineCount}/${SERVICES.length} Services Online`;
-    statusIndicator.style.background = 'rgba(255, 107, 53, 0.1)';
-    statusIndicator.style.borderColor = 'rgba(255, 107, 53, 0.2)';
-  } else {
-    statusText.textContent = 'Services Offline';
-    statusIndicator.style.background = 'rgba(255, 68, 68, 0.1)';
-    statusIndicator.style.borderColor = 'rgba(255, 68, 68, 0.2)';
-  }
-  
-  console.log(`📊 Service Status: ${onlineCount}/${SERVICES.length} online`);
+  statusText.textContent = onlineCount === SERVICES.length ? 
+    'All Systems Operational' : 
+    `${onlineCount}/${SERVICES.length} Services Online`;
 }
 
-async function loadMetrics() {
-  try {
-    const url = `${getServiceUrl(11000)}/metrics`;
-    const r = await fetch(url);
-    const d = await r.json();
-    
-    document.getElementById('stat-jobs').textContent = d.total_jobs || '5';
-    document.getElementById('stat-proposals').textContent = d.total_proposals || '0';
-    document.getElementById('stat-vas').textContent = d.total_vas || '0';
-    document.getElementById('stat-revenue').textContent = '$' + (parseFloat(d.total_revenue) || 0).toLocaleString();
-    document.getElementById('an-revenue').textContent = '$' + (parseFloat(d.total_revenue) || 0).toLocaleString();
-    document.getElementById('an-proposals').textContent = d.total_proposals || '0';
-  } catch(e) {
-    console.log('📊 Metrics service unavailable (demo mode)');
-  }
-}
-
-async function fetchJobs() {
-  const platform = document.getElementById('fetch-platform').value;
-  const skillsRaw = document.getElementById('fetch-skills').value;
-  const skills = skillsRaw ? skillsRaw.split(',').map(s => s.trim()) : [];
-  
-  document.getElementById('jobs-list').innerHTML = '<div class="loading">Fetching jobs...</div>';
-  
-  try {
-    const url = `${getServiceUrl(6000)}/fetch-jobs`;
-    const r = await fetch(url, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ platform, skills })
-    });
-    const d = await r.json();
-    
-    document.getElementById('jobs-count').textContent = `(${d.fetched} found)`;
-    document.getElementById('jobs-list').innerHTML = d.jobs.map(j => `
-      <div class="job-card">
-        <div class="job-title">${j.title}</div>
-        <div class="job-meta">
-          <span class="badge badge-${j.platform}">${j.platform}</span>
-          <span>💰 $${j.budget}</span>
-          <span>👤 ${j.client_name}</span>
-          <span class="badge badge-new">${j.status}</span>
-        </div>
-        <div class="job-description">${j.description}</div>
-        <div class="job-actions">
-          <button class="btn btn-secondary btn-sm" onclick='autoPropose(\`${j.description.replace(/`/g, "\\`")}\`,\`${j.client_name}\`,${j.budget},\`${j.skills.join(",")}\`)'>
-            Auto Propose
-          </button>
-          <button class="btn btn-secondary btn-sm" onclick="window.open('${j.url}','_blank')">
-            View Job
-          </button>
-        </div>
-      </div>
-    `).join('');
-    
-    showToast(`✅ ${d.fetched} jobs fetched!`);
-  } catch(e) {
-    console.error('❌ Fetch jobs failed:', e);
-    document.getElementById('jobs-list').innerHTML = `<div class="loading">Service offline or connection failed</div>`;
-  }
-}
-
-function autoPropose(desc, client, budget, skills) {
-  document.getElementById('prop-desc').value = desc;
-  document.getElementById('prop-client').value = client;
-  document.getElementById('prop-budget').value = budget;
-  document.getElementById('prop-skills').value = skills;
-  document.getElementById('proposal-result').innerHTML = '';
-  window.scrollTo(0, document.getElementById('prop-desc').offsetTop - 100);
-  showToast('✅ Job loaded — click Generate!');
-}
-
-async function generateProposal() {
-  const jobDescription = document.getElementById('prop-desc').value;
-  const clientName = document.getElementById('prop-client').value;
-  const budget = document.getElementById('prop-budget').value;
-  const skills = document.getElementById('prop-skills').value.split(',').map(s => s.trim());
-  
-  if (!jobDescription) {
-    showToast('⚠️ Enter a job description!');
-    return;
-  }
-  
-  document.getElementById('proposal-result').innerHTML = '<div class="loading">Generating proposal...</div>';
-  
-  try {
-    const url = `${getServiceUrl(7000)}/generate-proposal`;
-    const r = await fetch(url, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ jobDescription, clientName, budget: parseFloat(budget), skills })
-    });
-    const d = await r.json();
-    
-    proposalCount++;
-    document.getElementById('proposal-result').innerHTML = `
-      <div style="font-size:12px;color:var(--accent-green);margin-bottom:12px;font-weight:600">✅ Generated in ${d.mode} mode</div>
-      <div class="proposal-output">${d.proposal}</div>
-      <button class="btn btn-secondary btn-sm" style="margin-top:12px" onclick="copyProposal()">
-        <span>📋</span>
-        Copy Proposal
-      </button>
-    `;
-    document.getElementById('an-proposals').textContent = proposalCount;
-    showToast('✅ Proposal generated!');
-  } catch(e) {
-    console.error('❌ Proposal generation failed:', e);
-    document.getElementById('proposal-result').innerHTML = `<div class="loading">Service offline</div>`;
-  }
-}
-
-function copyProposal() {
-  const text = document.querySelector('.proposal-output')?.textContent;
-  if (text) {
-    navigator.clipboard.writeText(text);
-    showToast('📋 Copied to clipboard!');
-  }
-}
-
-function switchTab(tab) {
-  ['twitter','linkedin','success'].forEach(t => {
-    document.getElementById('tab-' + t).style.display = t === tab ? 'block' : 'none';
-  });
-  document.querySelectorAll('.tab').forEach((el, i) => {
-    el.classList.toggle('active', ['twitter','linkedin','success'][i] === tab);
-  });
-}
-
-async function postTweet() {
-  const content = document.getElementById('tweet-content').value;
-  if (!content) {
-    showToast('⚠️ Enter tweet content!');
-    return;
-  }
-  
-  try {
-    const url = `${getServiceUrl(10000)}/tweet`;
-    await fetch(url, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ content })
-    });
-    
-    addSocialLog('🐦 Twitter', content);
-    showToast('✅ Tweet posted (demo)!');
-    document.getElementById('tweet-content').value = '';
-  } catch(e) {
-    console.error('❌ Tweet failed:', e);
-    showToast('❌ Social media service offline');
-  }
-}
-
-async function postLinkedIn() {
-  const content = document.getElementById('linkedin-content').value;
-  if (!content) {
-    showToast('⚠️ Enter post content!');
-    return;
-  }
-  
-  try {
-    const url = `${getServiceUrl(10000)}/linkedin-post`;
-    await fetch(url, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ content })
-    });
-    
-    addSocialLog('💼 LinkedIn', content);
-    showToast('✅ LinkedIn post sent (demo)!');
-    document.getElementById('linkedin-content').value = '';
-  } catch(e) {
-    console.error('❌ LinkedIn post failed:', e);
-    showToast('❌ Social media service offline');
-  }
-}
-
-async function postSuccess() {
-  const vaName = document.getElementById('success-va').value;
-  const projectTitle = document.getElementById('success-project').value;
-  const amount = document.getElementById('success-amount').value;
-  
-  try {
-    const url = `${getServiceUrl(10000)}/auto-post-success`;
-    await fetch(url, {
-      method: 'POST',
-      headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ vaName, projectTitle, amount })
-    });
-    
-    addSocialLog('🎉 Success Story', `${vaName} completed ${projectTitle} - $${amount}`);
-    showToast('🎉 Success story posted!');
-  } catch(e) {
-    console.error('❌ Success post failed:', e);
-    showToast('❌ Social media service offline');
-  }
-}
-
-function addSocialLog(platform, content) {
-  const log = document.getElementById('social-log');
-  const el = document.createElement('div');
-  el.className = 'social-post';
-  
-  const now = new Date();
-  el.innerHTML = `
-    <div class="social-post-header">
-      <span class="social-platform">${platform}</span>
-      <span class="social-time">${now.toLocaleTimeString()}</span>
-    </div>
-    <div>${content.substring(0, 150)}${content.length > 150 ? '...' : ''}</div>
-  `;
-  
-  log.insertBefore(el, log.firstChild);
-}
-
-function updateTime() {
-  const now = new Date();
-  document.getElementById('current-time').textContent = now.toLocaleString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit'
-  });
-}
-
-// Initialize
-console.log('🔥 Ignite Agency Platform Dashboard v2.0');
-console.log(`📍 Running in ${isCodespaces ? 'GitHub Codespaces' : 'Local'} environment`);
-console.log('⚡ Starting service checks...');
-
+console.log('🔥 Phantom Freelance Collective Platform');
+console.log(`Environment: ${isCodespaces ? 'GitHub Codespaces' : 'Local'}`);
 checkServices();
-loadMetrics();
-updateTime();
-
-setInterval(updateTime, 1000);
-setInterval(checkServices, 30000); // Check every 30 seconds
-setInterval(loadMetrics, 30000);
+setInterval(checkServices, 30000);
 </script>
 </body>
 </html>

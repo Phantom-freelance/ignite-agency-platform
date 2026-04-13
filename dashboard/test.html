@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head><title>URL Test</title></head>
+<body>
+<h1>Codespaces URL Test</h1>
+<div id="output"></div>
+<script>
+const output = document.getElementById('output');
+
+// Test URL building logic
+const hostname = window.location.hostname;
+output.innerHTML += `<p>Current hostname: ${hostname}</p>`;
+
+const isCodespaces = hostname.includes('.app.github.dev');
+output.innerHTML += `<p>Is Codespaces: ${isCodespaces}</p>`;
+
+const match = hostname.match(/([^-]+-[^-]+-[^-]+-[^-]+-[^.]+)/);
+output.innerHTML += `<p>Regex match: ${match ? match[1] : 'NO MATCH'}</p>`;
+
+if (match) {
+  const baseUrl = match[1];
+  const testUrl = `https://${baseUrl}-6000.app.github.dev/health`;
+  output.innerHTML += `<p>Test URL for port 6000: <a href="${testUrl}" target="_blank">${testUrl}</a></p>`;
+  
+  // Try to fetch it
+  fetch(testUrl)
+    .then(r => r.json())
+    .then(d => {
+      output.innerHTML += `<p style="color:green">✅ SUCCESS: ${JSON.stringify(d)}</p>`;
+    })
+    .catch(e => {
+      output.innerHTML += `<p style="color:red">❌ FAILED: ${e.message}</p>`;
+    });
+}
+</script>
+</body>
+</html>
