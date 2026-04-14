@@ -1,14 +1,7 @@
 FROM node:18-alpine
 WORKDIR /app
-
-# Accept service name as build argument
-ARG SERVICE_NAME=job-acquisition
-
-# Copy the specific service
-COPY ${SERVICE_NAME}/package*.json ./
+COPY client-api/package*.json ./
 RUN npm install
-
-COPY ${SERVICE_NAME}/src ./src
-
-# Start the service
-CMD ["npm", "start"]
+COPY client-api/src ./src
+EXPOSE 5001
+CMD ["node", "src/index.js"]
