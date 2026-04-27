@@ -8,14 +8,11 @@ if (!supabaseUrl || !supabaseKey) {
   process.exit(1);
 }
 
-// Force schema refresh - updated April 27, 2026
 const supabase = createClient(supabaseUrl, supabaseKey, {
-  db: {
-    schema: 'public'
-  },
-  auth: {
-    autoRefreshToken: false,
-    persistSession: false
+  db: { schema: 'public' },
+  auth: { autoRefreshToken: false, persistSession: false },
+  global: {
+    headers: { 'Accept-Profile': 'public', 'Content-Profile': 'public' }
   }
 });
 
