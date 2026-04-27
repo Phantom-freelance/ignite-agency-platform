@@ -15,7 +15,14 @@ router.post('/register', async (req, res) => {
     
     const { data, error } = await supabase
       .from('users')
-      .insert([{ name, email, password: hashedPassword, company, phone }])
+      .insert([{ 
+        name, 
+        email, 
+        password: hashedPassword, 
+        company, 
+        phone,
+        source: 'jobnme'  // Mark as Jobnme user
+      }])
       .select()
       .single();
     
@@ -38,6 +45,7 @@ router.post('/login', async (req, res) => {
       .from('users')
       .select('*')
       .eq('email', email)
+      .eq('source', 'jobnme')  // Only Jobnme users
       .single();
     
     if (error || !user) {
@@ -66,11 +74,12 @@ router.post('/forgot-password', async (req, res) => {
   try {
     const { email } = req.body;
     
-    // Check if user exists
+    // Check if user exists (Jobnme users only)
     const { data: user, error: userError } = await supabase
       .from('users')
       .select('id, email, name')
       .eq('email', email)
+      .eq('source', 'jobnme')
       .single();
     
     if (userError || !user) {
